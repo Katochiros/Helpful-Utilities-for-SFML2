@@ -1,8 +1,8 @@
 #include "SFML_utils.h"
 
-namespace SFML_Utils
+namespace SFML_utils
 {
-	bool KeyBindings::onKeyReleased(sf::Keyboard::Key key)
+	bool onKeyReleased(sf::Keyboard::Key key)
 	{	
 	static int key_pressed_index;
 	key_pressed_index = static_cast<int>(key);
@@ -23,5 +23,27 @@ namespace SFML_Utils
 	}
 	
 	return false;
+	}
+
+	bool onMouseButtonReleased(sf::Mouse::Button button)
+	{
+		static int button_pressed_index;
+		button_pressed_index = static_cast<int>(button);
+
+		static std::vector<bool> buttons_pressed(sf::Mouse::Button::ButtonCount);
+
+		if (sf::Mouse::isButtonPressed(button) == true && buttons_pressed[button_pressed_index] == false)
+		{
+			buttons_pressed[button_pressed_index] = true;
+			return false;
+		}
+
+		if (sf::Mouse::isButtonPressed(button) == false && buttons_pressed[button_pressed_index] == true)
+		{
+			buttons_pressed[button_pressed_index] = false;
+			return true;
+		}
+
+		return false;
 	}
 }
