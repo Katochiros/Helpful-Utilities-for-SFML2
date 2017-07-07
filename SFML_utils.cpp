@@ -1,7 +1,11 @@
 #include "SFML_utils.h"
+#include <iostream>
 
 namespace SFML_utils
 {
+	sf::Font Text::font = sf::Font();
+	sf::Text Text::text = sf::Text();
+
 	bool onKeyReleased(sf::Keyboard::Key key)
 	{	
 	static int key_pressed_index;
@@ -45,5 +49,24 @@ namespace SFML_utils
 		}
 
 		return false;
+	}
+
+	void Text::initialise(std::string fontPath)
+	{
+		if (!Text::font.loadFromFile(fontPath))
+			std::cout << "Could not load font\n";
+		else
+			std::cout << "Font loaded!\n";
+
+		Text::text.setFont(Text::font);
+	}
+
+	void Text::draw(sf::Vector2f pos, unsigned int size, std::string text, sf::RenderWindow & window, sf::Color color)
+	{
+		Text::text.setString(text);
+		Text::text.setPosition(pos);
+		Text::text.setCharacterSize(size);
+		Text::text.setColor(color);
+		window.draw(Text::text);
 	}
 }
