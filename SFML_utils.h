@@ -10,6 +10,7 @@
 namespace SFML_utils
 {	
 	bool onKeyReleased(sf::Keyboard::Key key);	
+	bool onKeyPress(sf::Keyboard::Key key);
 	bool onMouseButtonReleased(sf::Mouse::Button button);
 
 	class Text {
