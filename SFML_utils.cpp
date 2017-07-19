@@ -92,4 +92,13 @@ namespace SFML_utils
 		Text::text.setColor(color);
 		window.draw(Text::text);
 	}
+
+	void quantiseVector(sf::Vector2f & vec, sf::Vector2i quantise_size)
+	{
+		sf::Vector2i pos((int)vec.x, (int)vec.y);
+		pos.x = (pos.x / quantise_size) * quantise_size.x;
+		pos.y = (pos.y / quantise_size) * quantise_size.y;
+		vec.x = (float)pos.x;
+		vec.y = (float)pos.y;
+	}
 }

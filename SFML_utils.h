@@ -9,9 +9,10 @@
 
 namespace SFML_utils
 {	
-	bool onKeyReleased(sf::Keyboard::Key key);	
-	bool onKeyPress(sf::Keyboard::Key key);
-	bool onMouseButtonReleased(sf::Mouse::Button button);
+	bool			onKeyReleased(sf::Keyboard::Key key);	
+	bool			onKeyPress(sf::Keyboard::Key key);
+	bool			onMouseButtonReleased(sf::Mouse::Button button);
+	void			quantiseVector(sf::Vector2f & vec, sf::Vector2i quantise_size);
 
 	class Text {
 	public:
