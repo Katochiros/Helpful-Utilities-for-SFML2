@@ -41,6 +41,8 @@ namespace SFML_utils
 	void fileout(std::string filename, std::string data);
 	std::vector<std::string>* filein(std::string filename);
 
+	std::vector<char> filein_binary(std::string filename);
+
 	class Text {
 	public:
 		static void		initialise(std::string fontPath);

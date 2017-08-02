@@ -256,4 +256,22 @@ namespace SFML_utils
 			std::cout << "ERROR: could not open file: " << filename << "\n";
 		return vec;
 	}
+
+	std::vector<char> filein_binary(std::string filename)
+	{		
+		if(!file_exists(filename))
+		{
+			std::cout << "ERROR: could not open file: " << filename << "\n";
+			return std::vector<char>;
+		}
+
+		std::ifstream myfile(filename, std::ios::binary);
+		
+		std::vector<char> in(
+			(std::istreambuf_iterator<char>(myfile)),
+			(std::istreambuf_iterator<char>())
+			);
+		
+		return in;
+	}
 }
